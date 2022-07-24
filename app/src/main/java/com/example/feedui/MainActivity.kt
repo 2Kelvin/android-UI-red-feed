@@ -23,6 +23,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -45,6 +48,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+// font poppins
+val poppins = FontFamily(
+    Font(R.font.poppins_regular, FontWeight.Normal),
+    Font(R.font.poppins_medium, FontWeight.Medium),
+    Font(R.font.poppins_semi_bold, FontWeight.SemiBold),
+    Font(R.font.poppins_bold, FontWeight.Bold)
+)
 
 @Composable
 fun feedUI() {
@@ -57,7 +67,7 @@ fun feedUI() {
         // menu Row
         Row( // make the icons in this Row bigger
             Modifier
-                .padding(top = 7.dp, bottom = 25.dp)
+                .padding(top = 7.dp, bottom = 25.dp, start = 10.dp, end = 10.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -65,16 +75,21 @@ fun feedUI() {
             Icon(
                 imageVector = Icons.Outlined.Menu,
                 contentDescription = null,
-                tint = Color.White
+                tint = Color.White,
+                modifier = Modifier.size(26.dp)
             )
             Text(
                 text = "Home",
-                color = Color.White
+                color = Color.White,
+                fontFamily = poppins,
+                fontWeight = FontWeight.Medium,
+                fontSize = 20.sp
             )
             Icon(
                 imageVector = Icons.Outlined.ArrowForward,
                 contentDescription = null,
-                tint = Color.White
+                tint = Color.White,
+                modifier = Modifier.size(26.dp)
             )
         }
         // column profile & button
@@ -87,7 +102,7 @@ fun feedUI() {
                 painter = painterResource(R.drawable.pic),
                 contentDescription = "Profile Picture",
                 Modifier
-                    .size(80.dp)
+                    .size(90.dp)
                     .clip(CircleShape)
                 // border(width = 2.dp, color = Color.White, Shape = RectangleShape) add circular border
             )
@@ -95,7 +110,9 @@ fun feedUI() {
             Text(
                 text = "June Lin",
                 color = Color.White,
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                fontFamily = poppins,
+                fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(7.dp))
             Text(
@@ -103,7 +120,9 @@ fun feedUI() {
                         "This life is meant to be enjoyed.",
                 color = Color.White,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.width(310.dp)
+                modifier = Modifier.width(310.dp),
+                fontFamily = poppins,
+                fontWeight = FontWeight.Medium
             )
             Spacer(modifier = Modifier.height(25.dp))
             Button(
@@ -113,7 +132,9 @@ fun feedUI() {
                 Text(
                     text = "Follow",
                     modifier = Modifier.padding(10.dp, 5.dp),
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    fontFamily = poppins,
+                    fontWeight = FontWeight.SemiBold
                 )
             }
             Spacer(modifier = Modifier.height(25.dp))
