@@ -55,7 +55,7 @@ fun feedUI() {
             .background(colorResource(R.color.bg_red))
     ) {
         // menu Row
-        Row(
+        Row( // make the icons in this Row bigger
             Modifier
                 .padding(top = 7.dp, bottom = 25.dp)
                 .fillMaxWidth(),
@@ -112,7 +112,8 @@ fun feedUI() {
             ) {
                 Text(
                     text = "Follow",
-                    modifier = Modifier.padding(10.dp, 5.dp)
+                    modifier = Modifier.padding(10.dp, 5.dp),
+                    fontSize = 16.sp
                 )
             }
             Spacer(modifier = Modifier.height(25.dp))
