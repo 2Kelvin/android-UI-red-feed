@@ -10,10 +10,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowForward
 import androidx.compose.material.icons.outlined.List
@@ -26,8 +23,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.feedui.ui.theme.FeedUITheme
 
 class MainActivity : ComponentActivity() {
@@ -58,7 +57,7 @@ fun feedUI() {
         // menu Row
         Row(
             Modifier
-                .padding(top = 10.dp, bottom = 25.dp)
+                .padding(top = 7.dp, bottom = 25.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -90,8 +89,33 @@ fun feedUI() {
                 Modifier
                     .size(80.dp)
                     .clip(CircleShape)
-        //add circular border            // .border(width = 2.dp, color = Color.White, Shape = RectangleShape)
+                // border(width = 2.dp, color = Color.White, Shape = RectangleShape) add circular border
             )
+            Spacer(modifier = Modifier.height(25.dp))
+            Text(
+                text = "June Lin",
+                color = Color.White,
+                fontSize = 20.sp
+            )
+            Spacer(modifier = Modifier.height(7.dp))
+            Text(
+                text = "Photographer, lover of life and an adventurer." +
+                        "This life is meant to be enjoyed.",
+                color = Color.White,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.width(310.dp)
+            )
+            Spacer(modifier = Modifier.height(25.dp))
+            Button(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow)
+            ) {
+                Text(
+                    text = "Follow",
+                    modifier = Modifier.padding(10.dp, 5.dp)
+                )
+            }
+            Spacer(modifier = Modifier.height(25.dp))
         }
     }
 }
