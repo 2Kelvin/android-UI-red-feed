@@ -1,31 +1,25 @@
 package com.example.feedui
 
-import android.graphics.drawable.shapes.Shape
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowForward
-import androidx.compose.material.icons.outlined.List
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.rounded.Favorite
-import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -65,6 +59,7 @@ fun feedUI() {
         Modifier
             .fillMaxSize()
             .background(colorResource(R.color.bg_red))
+            .verticalScroll(rememberScrollState())
     ) {
         // menu Row
         Row( // make the icons in this Row bigger
@@ -78,20 +73,20 @@ fun feedUI() {
                 imageVector = Icons.Outlined.Menu,
                 contentDescription = null,
                 tint = Color.White,
-                modifier = Modifier.size(26.dp)
+                modifier = Modifier.size(30.dp)
             )
             Text( // align this Text vertically with the icons
-                text = "Home",
+                text = stringResource(R.string.home),
                 color = Color.White,
                 fontFamily = poppins,
                 fontWeight = FontWeight.Medium,
-                fontSize = 20.sp
+                fontSize = 21.sp
             )
             Icon(
                 imageVector = Icons.Outlined.ArrowForward,
                 contentDescription = null,
                 tint = Color.White,
-                modifier = Modifier.size(26.dp)
+                modifier = Modifier.size(30.dp)
             )
         }
         // column profile & button
@@ -101,16 +96,20 @@ fun feedUI() {
         ) {
             //image-profile
             Image(
-                painter = painterResource(R.drawable.pic),
-                contentDescription = "Profile Picture",
+                painter = painterResource(R.drawable.photographer),
+                contentDescription = stringResource(R.string.profile_picture),
                 Modifier
                     .size(90.dp)
                     .clip(CircleShape)
-                // border(width = 2.dp, color = Color.White, Shape = RectangleShape) add circular border
+                    .border(
+                        width = 4.dp,
+                        color = Color.White,
+                        shape = RoundedCornerShape(50)
+                    )
             )
             Spacer(modifier = Modifier.height(25.dp))
             Text(
-                text = "June Lin",
+                text = stringResource(R.string.june_lin),
                 color = Color.White,
                 fontSize = 20.sp,
                 fontFamily = poppins,
@@ -118,8 +117,7 @@ fun feedUI() {
             )
             Spacer(modifier = Modifier.height(7.dp))
             Text(
-                text = "Photographer, lover of life and an adventurer." +
-                        "This life is meant to be enjoyed.",
+                text = stringResource(R.string.bio),
                 color = Color.White,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.width(310.dp),
@@ -132,7 +130,7 @@ fun feedUI() {
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow)
             ) {
                 Text(
-                    text = "Follow",
+                    text = stringResource(R.string.follow_btn),
                     modifier = Modifier.padding(10.dp, 5.dp),
                     fontSize = 16.sp,
                     fontFamily = poppins,
@@ -152,19 +150,16 @@ fun feedUI() {
             backgroundColor = Color.White,
             shape = RoundedCornerShape(10.dp)
         ) {
-            Column(
-                Modifier.padding(15.dp)
-            ) {
+            Column(Modifier.padding(15.dp)) {
                 Text(
-                    text = "yesterday",
+                    text = stringResource(R.string.yesterday),
                     color = colorResource(R.color.greyed_out),
                     fontFamily = poppins,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.padding(top = 10.dp, bottom = 12.dp)
                 )
                 Text(
-                    text = "We often question whether life is really worth it" +
-                            "and if it can be enjoyed. I say life is what you make it",
+                    text = stringResource(R.string.post_1),
                     fontFamily = poppins,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.padding(bottom = 15.dp)
@@ -177,8 +172,9 @@ fun feedUI() {
                             contentDescription = null,
                             tint = Color.Red
                         )
+                        Spacer(modifier = Modifier.width(5.dp))
                         Text(
-                            text = "45",
+                            text = stringResource(R.string.likes_45),
                             fontFamily = poppins,
                             fontWeight = FontWeight.Medium
                         )
@@ -186,12 +182,13 @@ fun feedUI() {
                     // row comments
                     Row(Modifier.weight(1f)) {
                         Icon(
-                            imageVector = Icons.Rounded.Notifications,
+                            painter = painterResource(R.drawable.comment),
                             contentDescription = null,
                             tint = colorResource(R.color.greyed_out)
                         )
+                        Spacer(modifier = Modifier.width(5.dp))
                         Text(
-                            text = "21",
+                            text = stringResource(R.string.comments_21),
                             fontFamily = poppins,
                             fontWeight = FontWeight.Medium
                         )
@@ -211,17 +208,18 @@ fun feedUI() {
             shape = RoundedCornerShape(10.dp)
         ) {
             Column(
-                Modifier.padding(15.dp)
-            ) {
+                Modifier
+                    .padding(15.dp)
+                    .fillMaxWidth()) {
                 Text(
-                    text = "2 days ago",
+                    text = stringResource(R.string.days),
                     color = colorResource(R.color.greyed_out),
                     fontFamily = poppins,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.padding(top = 10.dp, bottom = 12.dp)
                 )
                 Text(
-                    text = "June uploaded 4 new pictures",
+                    text = stringResource(R.string.post_2),
                     fontFamily = poppins,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.padding(bottom = 15.dp)
@@ -233,28 +231,28 @@ fun feedUI() {
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Image(
-                        painter = painterResource(R.drawable.pic),
+                        painter = painterResource(R.drawable.classy),
                         contentDescription = null,
                         modifier = Modifier
                             .size(70.dp)
                             .padding(end = 10.dp)
                     )
                     Image(
-                        painter = painterResource(R.drawable.pic),
+                        painter = painterResource(R.drawable.wild),
                         contentDescription = null,
                         modifier = Modifier
                             .size(70.dp)
                             .padding(end = 10.dp)
                     )
                     Image(
-                        painter = painterResource(R.drawable.pic),
+                        painter = painterResource(R.drawable.laughm),
                         contentDescription = null,
                         modifier = Modifier
                             .size(70.dp)
                             .padding(end = 10.dp)
                     )
                     Image(
-                        painter = painterResource(R.drawable.pic),
+                        painter = painterResource(R.drawable.bball),
                         contentDescription = null,
                         modifier = Modifier
                             .size(70.dp)
@@ -269,20 +267,22 @@ fun feedUI() {
                             contentDescription = null,
                             tint = Color.Red
                         )
+                        Spacer(modifier = Modifier.width(5.dp))
                         Text(
-                            text = "33",
+                            text = stringResource(R.string.likes_33),
                             fontFamily = poppins,
                             fontWeight = FontWeight.Medium
                         )
                     }
                     Row(Modifier.weight(1f)) {
                         Icon(
-                            imageVector = Icons.Rounded.Notifications,
+                            painter = painterResource(R.drawable.comment),
                             contentDescription = null,
                             tint = colorResource(R.color.greyed_out)
                         )
+                        Spacer(modifier = Modifier.width(5.dp))
                         Text(
-                            text = "10",
+                            text = stringResource(R.string.comments_10),
                             fontFamily = poppins,
                             fontWeight = FontWeight.Medium
                         )

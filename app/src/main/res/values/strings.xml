@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Feed UI</string>
+    <string name="home">Home</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="june_lin">June Lin</string>
+    <string name="bio">Photographer, lover of life and an adventurer. This life is meant to be enjoyed.</string>
+    <string name="follow_btn">Follow</string>
+    <string name="yesterday">yesterday</string>
+    <string name="post_1">We often question whether life is really worth it and if it can be enjoyed. I say life is what you make it.</string>
+    <string name="likes_45">45</string>
+    <string name="comments_21">21</string>
+    <string name="days">2 days ago</string>
+    <string name="post_2">June uploaded 4 new pictures.</string>
+    <string name="likes_33">33</string>
+    <string name="comments_10">10</string>
 </resources>
