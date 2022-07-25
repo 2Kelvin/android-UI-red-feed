@@ -10,11 +10,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowForward
 import androidx.compose.material.icons.outlined.List
 import androidx.compose.material.icons.outlined.Menu
+import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,7 +53,6 @@ class MainActivity : ComponentActivity() {
 }
 // font poppins
 val poppins = FontFamily(
-    Font(R.font.poppins_regular, FontWeight.Normal),
     Font(R.font.poppins_medium, FontWeight.Medium),
     Font(R.font.poppins_semi_bold, FontWeight.SemiBold),
     Font(R.font.poppins_bold, FontWeight.Bold)
@@ -67,7 +69,7 @@ fun feedUI() {
         // menu Row
         Row( // make the icons in this Row bigger
             Modifier
-                .padding(top = 7.dp, bottom = 25.dp, start = 10.dp, end = 10.dp)
+                .padding(top = 7.dp, bottom = 25.dp, start = 15.dp, end = 15.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -78,7 +80,7 @@ fun feedUI() {
                 tint = Color.White,
                 modifier = Modifier.size(26.dp)
             )
-            Text(
+            Text( // align this Text vertically with the icons
                 text = "Home",
                 color = Color.White,
                 fontFamily = poppins,
@@ -139,6 +141,156 @@ fun feedUI() {
             }
             Spacer(modifier = Modifier.height(25.dp))
         }
+
+        // 2 posts cards
+
+        // card 1
+        Card(
+            Modifier
+                .fillMaxWidth()
+                .padding(start = 15.dp, end = 15.dp, top = 15.dp),
+            backgroundColor = Color.White,
+            shape = RoundedCornerShape(10.dp)
+        ) {
+            Column(
+                Modifier.padding(15.dp)
+            ) {
+                Text(
+                    text = "yesterday",
+                    color = colorResource(R.color.greyed_out),
+                    fontFamily = poppins,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(top = 10.dp, bottom = 12.dp)
+                )
+                Text(
+                    text = "We often question whether life is really worth it" +
+                            "and if it can be enjoyed. I say life is what you make it",
+                    fontFamily = poppins,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(bottom = 15.dp)
+                )
+                Row(Modifier.width(150.dp)) {
+                    // row likes
+                    Row(Modifier.weight(1f)) {
+                        Icon(
+                            imageVector = Icons.Rounded.Favorite,
+                            contentDescription = null,
+                            tint = Color.Red
+                        )
+                        Text(
+                            text = "45",
+                            fontFamily = poppins,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
+                    // row comments
+                    Row(Modifier.weight(1f)) {
+                        Icon(
+                            imageVector = Icons.Rounded.Notifications,
+                            contentDescription = null,
+                            tint = colorResource(R.color.greyed_out)
+                        )
+                        Text(
+                            text = "21",
+                            fontFamily = poppins,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        // card 2
+        Card(
+            Modifier
+                .fillMaxWidth()
+                .padding(start = 15.dp, end = 15.dp, bottom = 15.dp),
+            backgroundColor = Color.White,
+            shape = RoundedCornerShape(10.dp)
+        ) {
+            Column(
+                Modifier.padding(15.dp)
+            ) {
+                Text(
+                    text = "2 days ago",
+                    color = colorResource(R.color.greyed_out),
+                    fontFamily = poppins,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(top = 10.dp, bottom = 12.dp)
+                )
+                Text(
+                    text = "June uploaded 4 new pictures",
+                    fontFamily = poppins,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(bottom = 15.dp)
+                )
+                //row pictures
+                Row(
+                    Modifier
+                        .padding(bottom = 10.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.pic),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(70.dp)
+                            .padding(end = 10.dp)
+                    )
+                    Image(
+                        painter = painterResource(R.drawable.pic),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(70.dp)
+                            .padding(end = 10.dp)
+                    )
+                    Image(
+                        painter = painterResource(R.drawable.pic),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(70.dp)
+                            .padding(end = 10.dp)
+                    )
+                    Image(
+                        painter = painterResource(R.drawable.pic),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(70.dp)
+                            .padding(end = 10.dp)
+                    )
+                }
+                // row likes $ comments
+                Row(Modifier.width(150.dp)) {
+                    Row(Modifier.weight(1f)) {
+                        Icon(
+                            imageVector = Icons.Rounded.Favorite,
+                            contentDescription = null,
+                            tint = Color.Red
+                        )
+                        Text(
+                            text = "33",
+                            fontFamily = poppins,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
+                    Row(Modifier.weight(1f)) {
+                        Icon(
+                            imageVector = Icons.Rounded.Notifications,
+                            contentDescription = null,
+                            tint = colorResource(R.color.greyed_out)
+                        )
+                        Text(
+                            text = "10",
+                            fontFamily = poppins,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
+                }
+            }
+        }
+
     }
 }
 
