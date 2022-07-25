@@ -91,7 +91,8 @@ fun feedUI() {
         }
         // column profile & button
         Column(
-            Modifier.fillMaxWidth(),
+            Modifier
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             //image-profile
@@ -141,7 +142,6 @@ fun feedUI() {
         }
 
         // 2 posts cards
-
         // card 1
         Card(
             Modifier
@@ -150,69 +150,13 @@ fun feedUI() {
             backgroundColor = Color.White,
             shape = RoundedCornerShape(10.dp)
         ) {
-            Column(Modifier.padding(15.dp)) {
-                Text(
-                    text = stringResource(R.string.yesterday),
-                    color = colorResource(R.color.greyed_out),
-                    fontFamily = poppins,
-                    fontWeight = FontWeight.Medium,
-                    modifier = Modifier.padding(top = 10.dp, bottom = 12.dp)
-                )
-                Text(
-                    text = stringResource(R.string.post_1),
-                    fontFamily = poppins,
-                    fontWeight = FontWeight.Medium,
-                    modifier = Modifier.padding(bottom = 15.dp)
-                )
-                Row(Modifier.width(150.dp)) {
-                    // row likes
-                    Row(Modifier.weight(1f)) {
-                        Icon(
-                            imageVector = Icons.Rounded.Favorite,
-                            contentDescription = null,
-                            tint = Color.Red
-                        )
-                        Spacer(modifier = Modifier.width(5.dp))
-                        Text(
-                            text = stringResource(R.string.likes_45),
-                            fontFamily = poppins,
-                            fontWeight = FontWeight.Medium
-                        )
-                    }
-                    // row comments
-                    Row(Modifier.weight(1f)) {
-                        Icon(
-                            painter = painterResource(R.drawable.comment),
-                            contentDescription = null,
-                            tint = colorResource(R.color.greyed_out)
-                        )
-                        Spacer(modifier = Modifier.width(5.dp))
-                        Text(
-                            text = stringResource(R.string.comments_21),
-                            fontFamily = poppins,
-                            fontWeight = FontWeight.Medium
-                        )
-                    }
-                }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(15.dp))
-
-        // card 2
-        Card(
-            Modifier
-                .fillMaxWidth()
-                .padding(start = 15.dp, end = 15.dp, bottom = 15.dp),
-            backgroundColor = Color.White,
-            shape = RoundedCornerShape(10.dp)
-        ) {
             Column(
                 Modifier
                     .padding(15.dp)
-                    .fillMaxWidth()) {
+                    .fillMaxWidth()
+            ) {
                 Text(
-                    text = stringResource(R.string.days),
+                    text = stringResource(R.string.yesterday),
                     color = colorResource(R.color.greyed_out),
                     fontFamily = poppins,
                     fontWeight = FontWeight.Medium,
@@ -291,6 +235,62 @@ fun feedUI() {
             }
         }
 
+        Spacer(modifier = Modifier.height(15.dp))
+
+        // card 2
+        Card(
+            Modifier
+                .fillMaxWidth()
+                .padding(start = 15.dp, end = 15.dp, bottom = 15.dp),
+            backgroundColor = Color.White,
+            shape = RoundedCornerShape(10.dp)
+        ) {
+            Column(Modifier.padding(15.dp)) {
+                Text(
+                    text = stringResource(R.string.days),
+                    color = colorResource(R.color.greyed_out),
+                    fontFamily = poppins,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(top = 10.dp, bottom = 12.dp)
+                )
+                Text(
+                    text = stringResource(R.string.post_1),
+                    fontFamily = poppins,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(bottom = 15.dp)
+                )
+                Row(Modifier.width(150.dp)) {
+                    // row likes
+                    Row(Modifier.weight(1f)) {
+                        Icon(
+                            imageVector = Icons.Rounded.Favorite,
+                            contentDescription = null,
+                            tint = Color.Red
+                        )
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Text(
+                            text = stringResource(R.string.likes_45),
+                            fontFamily = poppins,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
+                    // row comments
+                    Row(Modifier.weight(1f)) {
+                        Icon(
+                            painter = painterResource(R.drawable.comment),
+                            contentDescription = null,
+                            tint = colorResource(R.color.greyed_out)
+                        )
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Text(
+                            text = stringResource(R.string.comments_21),
+                            fontFamily = poppins,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
+                }
+            }
+        }
     }
 }
 
